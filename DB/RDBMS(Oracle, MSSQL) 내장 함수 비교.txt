@@ -1,0 +1,86 @@
+분류	함수	Oracle	Oracle 함수명	MSSQL	MSSQL 함수명
+문자열	문자를 ASCII로 변환	○	ASCII	○	ASCII
+	문자열 연결	○	CONCAT	○	(식 + 식)
+	ASCII를 문자로 변환	○	CHR	○	CHAR
+	문자열의 문자 시작 위치 반환(왼쪽부터)	○	INSTR	○	CHARINDEX
+	소문자로 변환	○	LOWER	○	LOWER
+	대문자로 변환	○	UPPER	○	UPPER
+	문자열의 왼쪽 채우기	○	LPAD	×	-
+	선행 공백 제거	○	LTRIM	○	LTRIM
+	후행 공백 제거	○	RTRIM	○	RTRIM
+	문자열의 패턴 시작 위치	○	INSTR	○	PATINDEX
+	문자열을 여러 번 반복	○	RPAD	○	REPLICATE
+	문자열의 발음 기호	○	SOUNDEX	○	SOUNDEX
+	반복되는 공백 문자열	○	RPAD	○	SPACE
+	수치 데이터에서 변환된 문자 데이터	○	TO_CHAR	○	STR
+	부분 문자열	○	SUBSTR	○	SUBSTRING
+	문자 바꾸기	○	REPLACE	○	STUFF
+	문자열에서 각 단어의 첫 문자를 대문자로 만들기	○	INITCAP	×	-
+	문자열 번역(치환)	○	TRANSLATE	×	-
+	문자열 길이	○	LENGTH	○	DATELENGTH, LEN
+	목록에서 가장 큰 문자열	○	GREATEST	×	-
+	목록에서 가장 작은 문자열	○	LEAST	×	-
+	NULL일 때 문자열 변환	○	NVL	○	ISNULL
+집계	평균	○	AVG	○	AVG
+	개수	○	COUNT	○	COUNT
+	최대값	○	MAX	○	MAX
+	최소값	○	MIN	○	MIN
+	표준 편차	○	STDDEV	○	STDEV, STDEVP
+	합계	○	SUM	○	SUM
+	분산	○	VARIANCE	○	VAR, VARP
+변환	숫자 → 문자	○	TO_CHAR	○	CONVERT
+	문자 → 숫자	○	TO_NUMBER	○	CONVERT
+	날짜 → 문자	○	TO_CHAR	○	CONVERT
+	문자 → 날짜	○	TO_DATE	○	CONVERT
+	16진수 → 이진수	○	HEX_TO_RAW	○	CONVERT
+	이진수 → 16진수	○	RAW_TO_HEX	○	CONVERT
+날짜	날짜 추가	○	+, -, ADD_MOUNTHS	○	DATEADD
+	날짜 차이	○	+, -, MONTHS_BETWEEN	○	DATEDIFF
+	현재 날짜와 시간	○	SYSDATE	○	GETDATE()
+	달의 마지막 날	○	LAST_DAY	×	-
+	표준 시간대 변환	○	NEW_TIME	×	-
+	다음 날의 요일	○	NEXT_DAY	×	-
+	날짜의 문자열 표시	○	TO_CHAR	○	DATENAME
+	날짜의 정수 표시	○	TO_NUMBER(TO_CHAR))	○	DATEPART
+	날짜 반올림	○	ROUND	○	CONVERT
+	날짜 잘라내기	○	TRUNC	○	CONVERT
+	문자열을 날짜로	○	TO_DATE	○	CONVERT
+	NULL일 때 날짜 변환	○	NVL	○	ISNULL
+수식/수치	절대값	○	ABS	○	ABS
+	아크 코사인	○	ACOS	○	ACOS
+	아크 사인	○	ASIN	○	ASIN
+	n의 아크 탄젠트	○	ATAN	○	ATAN
+	n과 m의 아크 탄젠트	○	ATAN2	○	ATN2
+	최소 정수 >= 값	○	CEIL	○	CEILING
+	코사인	○	COS	○	COS
+	쌍곡선 코사인	○	COSH	○	COT
+	지수 값	○	EXP	○	EXP
+	최대 정수 <= 값	○	FLOOR	○	FLOOR
+	자연 로그	○	LN	○	LOG
+	밑이 n인 로그	○	LOG(N)	×	-
+	상용 로그	○	LOG(10)	○	LOG(10)
+	나머지 연산자	○	MOD	○	USE MODULO (%) OPERATOR
+	거듭제곱	○	POWER	○	POWER
+	난수	×	-	○	RAND
+	반올림	○	ROUND	○	ROUND
+	숫자 부호 표시	○	SIGN	○	SIGN
+	사인	○	SIN	○	SIN
+	쌍곡선 사인	○	SINH	×	-
+	제곱근	○	SQRT	○	SQRT
+	탄젠트	○	TAN	○	TAN
+	쌍곡선 탄젠트	○	TANH	×	-
+	잘라내기	○	TRUNC	×	-
+	목록의 최대값	○	GREATEST	×	-
+	목록의 최소값	○	LEAST	×	-
+	NULL일 때 숫자 변환	○	NVL	○	ISNULL
+기타	NULL이 아닌 첫째 식 반환	○	DECODE	○	COALESCE
+	현재 시퀀스 값	○	CURRVAL	×	-
+	다음 시퀀스 값	○	NEXTVAL	×	-
+	식1 = 식2일 때 NULL 반환	○	DECODE	○	NULLIF
+	사용자의 로그인 ID 번호	○	UID	○	SUSER_ID
+	사용자의 로그인 이름	○	USER	○	SUSER_NAME
+	사용자의 데이터베이스 ID 번호	○	UID	○	USER_ID
+	사용자의 데이터베이스 이름	○	USER	○	USER_NAME
+	현재 사용자	○	CURRENT_USER	○	CURRENT_USER
+	사용자 환경(감사 추적)	○	USERENV	×	-
+	CONNECT BY 절의 수준	○	LEVEL	×	-
