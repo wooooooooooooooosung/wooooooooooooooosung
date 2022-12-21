@@ -1,0 +1,21 @@
+Visual Studio는 사용 목적이 상업적이지 않다면 로그인 후, 무료 사용이 가능하다. 
+만약 예외 사항(네트워크 방화벽 이슈, Microsoft 계정 없음 등)으로 로그인이 불가할 경우, 레지스트리 키 삭제를 통해 라이센스 상태를 변경시킨 후 사용이 가능하다. 
+
+1. Visual Studio가 실행 중이라면 저장 후 종료한다. 
+2. 버전에 맞는 레지스트리 키를 삭제한다. 
+	Visual Studio 2015: HKEY_CLASSES_ROOT\Licenses\4D8CFBCB-2F6A-4AD2-BABF-10E28F6F2C8F 
+	Visual Studio 2017: HKEY_CLASSES_ROOT\Licenses\5C505A59-E312-4B89-9508-E162F8150517 
+	Visual Studio 2019: HKEY_CLASSES_ROOT\Licenses\41717607-F34E-432C-A138-A3CFD7E25CDA 
+3. Visual Studio Installer에서 복구를 진행한다. 
+
+Microsoft Product Code(MPC): 
+	Visual Studio Professional 2013: 06177 
+	Visual Studio Premium 2013: 06191 
+	Visual Studio Ultimate 2013: 06181 
+	Visual Studio Professional 2015: 07062 
+	Visual Studio Enterprise 2015: 07060 
+	Visual Studio Enterprise 2017: 08860 
+	Visual Studio Professional 2017: 08862 
+	Visual Studio Test Professional 2017: 08866 
+	Visual Studio Enterprise 2019: 09260 
+	Visual Studio Professional 2019: 09262 
