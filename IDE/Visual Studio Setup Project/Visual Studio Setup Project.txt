@@ -1,0 +1,27 @@
+■ 요구사항
+1. 셋업 파일 실행 시, 특정 폴더에 디렉토리가 생성되어야 한다.
+2. 생성된 디렉토리에는 바이너리 파일이 포함되어야 한다.
+3. 설치 이후 바이너리 파일이 자동으로 구동되어야 한다.
+
+■ IDE 
+- Visual Studio 2019 
+- Notepad++ (vbs)
+
+■ 방법
+0. 세팅
+  - Visual Studio 상단 메뉴 확장(X) > 확장 관리(M)
+  - Microsoft Visual Studio Installer Projects 다운로드
+  - 해당 솔루션(또는 신규 생성)에 새 프로젝트 생성
+  - Setup Project 생성
+1. 셋업 파일 실행 시, 특정 폴더에 디렉토리가 생성되어야 한다. 
+  - 프로젝트 우클릭 > View > 파일 시스템 > Application Folder 우클릭 > 속성 창 > DefaultLocation 변경
+2. 생성된 디렉토리에는 바이너리 파일이 포함되어야 한다.
+  - Application Folder에 파일 추가 또는 프로젝트 출력
+3. 설치 이후 바이너리 파일이 자동으로 구동되어야 한다. (해당 방법이 정답은 아님.)
+  - 프로젝트 우클릭 > View > 사용자 지정 작업 > Commit 추가를 통해 설치 이후 작업을 지정할 수 있다.
+  - Commit에 AutoRunScript.vbs 추가 및 해당 파일 속성의 CustomActionData에 [TARGETDIR]{파일명} 입력
+  (서비스형 파일을 구동시키니 설치 완료가 안되어 Commit에 vbs 스크립트 파일 추가 후, 스크립트 파일을 통해 바이너리 파일을 구동했다.)
+  - vbs 파일은 배포 시 포함 시키지 않기 위해 속성에서 Exclude 옵션을 True로 설정했다.
+
+* 빌드 시 빌드 모드 디렉토리에 msi, exe 파일이 생성된다.
+* 배포는 Release 모드에서 빌드 하는 것을 추천한다.
