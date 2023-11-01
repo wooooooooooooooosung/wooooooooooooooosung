@@ -1,5 +1,5 @@
 <h1>Python Window Service Control</h1>
-<br><br><br>
+<br>
 
 <h2>1️⃣ Window Service 란</h2>
 <h3>
@@ -11,16 +11,16 @@
 <br>
 <p>부팅 이후부터 종료 시 까지 백그라운드에서 구동되는 응용 프로그램</p>
 <p>Watchdog(와치독)과 같은 감시/복구 기능 구현 시 사용</p>
-<br>
+<br><br><br>
 <h3>장점</h3>
 <p>윈도우 로그인 여부와 상관없이 구동</p>
 <p>Local System Account로 구동되어 시스템 제어 권한을 가진다.</p>
-<br>
+<br><br><br>
 <h3>단점</h3>
 <p>GUI를 가질 수 없다.</p>
 <p>데스크탑과 연계가 불가하다.</p>
 <p>고려해야 할 사항이 많다.</p>
-<br><br><br>
+<br><br><br><br><br>
 
 <h2>2️⃣ Windows Service 일반적인 제어</h2>
 <h3>1. Service 사용</h3>
