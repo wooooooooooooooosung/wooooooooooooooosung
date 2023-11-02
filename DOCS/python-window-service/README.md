@@ -1,11 +1,11 @@
-<h1>Python Window Service Control</h1>
+<h1>Python Windows Service Control</h1>
 <br>
 
-<h2>1️⃣ Window Service 란</h2>
+<h2>1️⃣ Windows Service란</h2>
 <h3>
-┌　　　┐　　┌　　　　　　　　┐　　┌　　　　　　　┐　　┌　　　　┐　　┌　　　　　　　　　　┐<br>
-　부팅　　→　　드라이버 로딩　　→　　 서비스 로딩　　→　　로그온　　→　　응용 프로그램 로딩<br>
-└　　　┘　　└　　　　　　　　┘　　└　　　　　　　┘　　└　　　　┘　　└　　　　　　　　　　┘
+┌　　　┐　　┌　　　　　　　　┐　　┌　　　　　　　　　┐　　┌　　　　　┐　　┌　　　　　　　　　　┐<br>
+　부팅　　→　　드라이버 로딩　　→　　 SCM/서비스 로딩　　→　　로그온　　→　　응용 프로그램 로딩<br>
+└　　　┘　　└　　　　　　　　┘　　└　　　　　　　　　┘　　└　　　　　┘　　└　　　　　　　　　　┘
 </h3>
 <p>* 윈도우 기동 과정 단순화</p>
 <br>
@@ -14,20 +14,31 @@
 <br><br><br>
 <h3>장점</h3>
 <p>윈도우 로그인 여부와 상관없이 구동</p>
-<p>Local System Account로 구동되어 시스템 제어 권한을 가진다.</p>
+<p>Local System Account로 구동되어 시스템 제어 권한 부여</p>
 <br><br><br>
 <h3>단점</h3>
-<p>GUI를 가질 수 없다.</p>
-<p>데스크탑과 연계가 불가하다.</p>
-<p>고려해야 할 사항이 많다.</p>
+<p>GUI ❌</p>
+<p>데스크탑 연계 불가</p>
+<p>다수의 고려사항</p>
 <br><br><br><br><br>
 
-<h2>2️⃣ Windows Service 일반적인 제어</h2>
-<h3>1. Service 사용</h3>
-<p>asdasd</p>
-<br>
-<h3>2. sc.exe 사용</h3>
-<p>C:\Windows\System32\sc.exe</p>
+<h2>2️⃣ SCP와 SCM</h2>
+<h3>SCP (Service Control Panel)</h3>
+<p>sc.exe 등과 같은 서비스 등록, 실행 제어의 역할</p>
+<p>SCP는 커스터마이징 등 직접 구현 가능</p>
+<br><br><br>
+<h3>SCM (Service Control Manager)</h3>
+<p>서비스 DB의 목록을 제어함</p>
+<p>레지스트리: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\</p>
+<p>DB 내용을 잘 알더라도, 직접 수정은 호환성 등의 문제로 권장하지 않음</p>
+<br><br><br>
+<h3>SCM 기능</h3>
+<h4>요약: 서비스 자동 구동 및 제어 확인</h4>
+<p>&nbsp;- 설치된 서비스 DB 관리</p>
+<p>&nbsp;- 부팅 또는 사용자 요구 시 서비스 구동</p>
+<p>&nbsp;- 설치된 서비스 목록 열거</p>
+<p>&nbsp;- 실행중인 서비스의 현재 상태 관리</p>
+<p>&nbsp;- 실행중인 서비스에게 제어 신호 송신</p>
 
 
 <br><br><br>
