@@ -23,6 +23,7 @@
 <br><br><br><br><br>
 
 <h2>2️⃣ SCP와 SCM</h2>
+<p>.NET / Windows SDK 설치 시 자동 포함</p>
 <h3>SCP (Service Control Panel)</h3>
 <p>sc.exe 등과 같은 서비스 등록, 실행 제어의 역할</p>
 <p>SCP는 커스터마이징 등 직접 구현 가능</p>
