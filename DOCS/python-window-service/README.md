@@ -34,6 +34,7 @@
 <br><br><br>
 <h3>SCM (Service Control Manager)</h3>
 <p>서비스 DB의 목록을 제어함</p>
+<img src="./Services DB.jpg">
 <p>레지스트리: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\</p>
 <p>DB 내용을 잘 알더라도, 직접 수정은 호환성 등의 문제로 권장하지 않음</p>
 <br><br><br>
@@ -44,6 +45,26 @@
 <p>&nbsp; - 실행중인 서비스의 현재 상태 관리</p>
 <p>&nbsp; - 실행중인 서비스에게 제어 신호 송신</p>
 <h4>요약: 서비스 자동 구동 및 제어 확인</h4>
+<br><br><br><br><br>
+
+<h2>3️⃣ Python에서 서비스 제어하기(PyWin32)</h2>
+<h3>PyWin32</h3>
+
+```py
+pip install pywin32
+```
+
+<h4>Win32 API의 기능들을 Python에서 사용하기 위한 확장</h4>
+<p>&nbsp; - 마우스 컨트롤</p>
+<p>&nbsp; - 화면 정보 얻기</p>
+<p>&nbsp; - 시간 정보 얻기</p>
+<p>&nbsp; - 사용자 정보 얻기</p>
+<p>&nbsp; - 파일 관리</p>
+<p>&nbsp; - 클립보드 사용</p>
+
+
+
+
 
 <br><br><br>
 <h2>🔗 Reference</h2>
