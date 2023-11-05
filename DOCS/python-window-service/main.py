@@ -5,44 +5,47 @@ import win32event
 import time
 
 class LogTestService(win32serviceutil.ServiceFramework):
-    _svc_name_ = "LogTestService2"
-    _svc_display_name_ = "Log Test Service2"
-    _svc_description_ = "Advanced Programming2 Engaged Learning"
+    _svc_name_ = "LogTestService"
+    _svc_display_name_ = "Log Test Service"
+    _svc_description_ = "Advanced Programming Engaged Learning"
 
-    #log_file = open('C:/Users/ssu-sw/Desktop/ServiceLog.txt', 'w')
+    log_file = open('C:/Users/sung/Desktop/고급플밍/ServiceLog.txt', 'a')
+    log_count = 1
+
+    def write_log(self, text):
+        self.log_file.write("[ " + time.ctime() + " ] " + text + "\n")
+        self.log_file.flush()
     
     def __init__(self, args):
-        log_file = open('C:/Users/ssu-sw/Desktop/ServiceLog.txt', 'a')
-        log_file.write("[ " + time.ctime() + " ] 설치\n")
-        log_file.flush()
+
+        # 서비스 시작 명령
         win32serviceutil.ServiceFramework.__init__(self, args)
         self.hWaitStop = win32event.CreateEvent(None, 0, 0, None)
 
     def SvcStop(self):
-        log_file = open('C:/Users/ssu-sw/Desktop/ServiceLog.txt', 'a')
-        log_file.write("[ " + time.ctime() + " ] 중지\n")
-        log_file.flush()
+
+        self.write_log("구동 중지")
+
+        # 서비스 정지 명
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
         win32event.SetEvent(self.hWaitStop)
 
     def SvcDoRun(self):
-        log_file = open('C:/Users/ssu-sw/Desktop/ServiceLog.txt', 'a')
-        log_file.write("[ " + time.ctime() + " ] 구동\n")
-        log_file.flush()
-        servicemanager.LogMsg(servicemanager.EVENTLOG_INFORMATION_TYPE,
-                             servicemanager.PYS_SERVICE_STARTED,
-                             (self._svc_name_, ''))
+
+        self.write_log("구동 시작")
+
+        # 동작할 함수 호출
         self.main()
 
     def main(self):
         
-        log_file = open('C:/Users/ssu-sw/Desktop/ServiceLog.txt', 'a')
         while True:
-            # 1초마다 현재 시간을 로그 파일에 기록
-            log_file.write("[ " + time.ctime() + " ] 구동중\n")
-            log_file.flush()
-            time.sleep(1)
 
+            # 1초마다 로그 남기기
+            self.write_log("구동중 " + str(self.log_count) + "번 째 로그")
+            self.log_count = self.log_count + 1
+            time.sleep(1)
+            
             # 서비스 중지 이벤트를 확인
             if win32event.WaitForSingleObject(self.hWaitStop, 0) == win32event.WAIT_OBJECT_0:
                 break
