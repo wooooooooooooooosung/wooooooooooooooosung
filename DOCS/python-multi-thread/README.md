@@ -6,9 +6,10 @@
 <img src="./Process.jpg">
 <br><br><br>
 <h3>스레드란</h3>
-<p>프로세스 내에서 작업 수행하는 실행단위</p>
-<img src="./SingleThread.png" width=700 background="#FFFFFF">
-<p>싱글 스레드는 15개의 작업을 직렬로 혼자 수행함</p>
+<h4>프로세스 내에서 작업 수행하는 실행단위</h4>
 <br>
-<img src="./MultiThread.png" width=700>
+<p>싱글 스레드는 15개의 작업을 직렬로 혼자 수행함</p>
+<img src="./SingleThread.jpg" width=700>
+<br>
 <p>멀티 스레드는 15개의 작업을 병렬로 나누어 수행함</p>
+<img src="./MutliThread.jpg" width=700>
