@@ -49,11 +49,7 @@
 
 <h2>3️⃣ Python에서 서비스 제어하기(PyWin32)</h2>
 <h3>PyWin32</h3>
-
-```py
-pip install pywin32
-```
-
+<br>
 <h4>Win32 API의 기능들을 Python에서 사용하기 위한 확장</h4>
 <p>&nbsp; - 마우스 컨트롤</p>
 <p>&nbsp; - 화면 정보 얻기</p>
@@ -61,12 +57,117 @@ pip install pywin32
 <p>&nbsp; - 사용자 정보 얻기</p>
 <p>&nbsp; - 파일 관리</p>
 <p>&nbsp; - 클립보드 사용</p>
+<br>
 
+<h4>모듈 다운도르</h4>
 
+```py
+pip install pywin32
+```
 
+<br>
+<h4>소스 코드</h4>
 
+```py
+import win32serviceutil
+import servicemanager
+import win32service
+import win32event
+import time
 
-<br><br><br>
+class LogTestService(win32serviceutil.ServiceFramework):
+    _svc_name_ = "LogTestService"
+    _svc_display_name_ = "Log Test Service"
+    _svc_description_ = "Advanced Programming Engaged Learning"
+
+    log_file = open('C:/Users/sung/Desktop/고급플밍/ServiceLog.txt', 'a')
+    log_count = 1
+
+    def write_log(self, text):
+        self.log_file.write("[ " + time.ctime() + " ] " + text + "\n")
+        self.log_file.flush()
+    
+    def __init__(self, args):
+
+        # 서비스 시작 명령
+        win32serviceutil.ServiceFramework.__init__(self, args)
+        self.hWaitStop = win32event.CreateEvent(None, 0, 0, None)
+
+    def SvcStop(self):
+
+        self.write_log("구동 중지")
+
+        # 서비스 정지 명
+        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
+        win32event.SetEvent(self.hWaitStop)
+
+    def SvcDoRun(self):
+
+        self.write_log("구동 시작")
+
+        # 동작할 함수 호출
+        self.main()
+
+    def main(self):
+        
+        while True:
+
+            # 1초마다 로그 남기기
+            self.write_log("구동중 " + str(self.log_count) + "번 째 로그")
+            self.log_count = self.log_count + 1
+            time.sleep(1)
+            
+            # 서비스 중지 이벤트를 확인
+            if win32event.WaitForSingleObject(self.hWaitStop, 0) == win32event.WAIT_OBJECT_0:
+                break
+
+        log_file.close()  # 로그 파일 닫기
+
+# 시작점
+if __name__ == '__main__':
+    win32serviceutil.HandleCommandLine(LogTestService)
+
+```
+
+<br>
+<h4>Python Script를 통한 서비스 제어</h4>
+
+```py
+# 서비스 등록
+python main.py install
+# 서비스 구동
+python main.py start
+# 서비스 중지
+python main.py stop
+# 서비스 재구동
+python main.py restart
+# 서비스 삭제
+python main.py remove
+```
+
+<br>
+<h4>win32serviceutil 모듈을 통한 서비스 제어</h4>
+
+```py
+# 서비스 구동
+win32serviceutil.StartService(서비스 이름)
+# 서비스 중지
+win32serviceutil.StopService(서비스 이름)
+# 서비스 재구동
+win32serviceutil.RestartService(서비스 이름)
+```
+
+<br>
+<h4>서비스로 등록할 클래스 내에 __init__, SvcStop, SvcDoRun 함수가 있어야 정상 동작함</h4>
+<p>&nbsp; - 서비스 구동, 중지 커멘드가 실행되지 않음</p>
+<br><br><br><br><br>
+
+<h2>4️⃣ Python에서 서비스 제어하기(기타 방법)</h2>
+<h3>PyInstaller 모듈로 실행파일(.exe) 생성</h3>
+<h4>생성된 실행파일을 sc.exe, NSSM 등의 SCP를 통하여 서비스 등록함</h4>
+
+<br><br><br><br><br>
+
 <h2>🔗 Reference</h2>
 <p><a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiwka3Dg6KCAxUDVN4KHWqVAucQFnoECAwQAQ&url=https%3A%2F%2Fcrowback.tistory.com%2F202&usg=AOvVaw1T4b3rYzjvvm_T7f7-EX2R&opi=89978449">Windows Service란 무엇인가</a></p>
 <p><a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwja5fuTk6KCAxVWaN4KHcsyCaEQFnoECAoQAQ&url=https%3A%2F%2Fcosmosnet.tistory.com%2Fentry%2FWindows-Service-3-%25EC%2584%25A4%25EC%25B9%2598%25EC%2599%2580-%25EC%25A0%259C%25EA%25B1%25B0&usg=AOvVaw0lHupWvnYe70kltxKjgKbL&opi=89978449">Windows Service 고려사항</a></p>
