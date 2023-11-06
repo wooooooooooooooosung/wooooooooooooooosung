@@ -12,8 +12,12 @@
 <img src="./Thread.JPG">
 <br><br><br><br><br>
 <h2>2️⃣ Python 멀티 스레드와 GIL</h2>
-<h3>Python 멀티 스레드는 GIL로 인해 불가</h3>
-<h4>Global Interpreter Lock</h4>
+<br>
+<h3>Python 멀티 스레드 가능한가?</h3>
+<h4>GIL 정책으로 멀티 스레드는 ⭕, 병렬 실행은 ❌</h4>
+
+<br><br><br><br><br>
+<h3>GIL (Global Interpreter Lock)</h3>
 <p>코드를 실행하는 인터프리터가 반드시 하나의 스레드만을 처리하도록 제한</p>
 <img src="./PythonGIL.png">
 <br><br><br>
