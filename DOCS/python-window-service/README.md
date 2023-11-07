@@ -31,6 +31,7 @@
 <p>sc.exe 등과 같은 서비스 등록, 실행 제어의 역할</p>
 <p>sc command</p>
 <p>SCP는 커스터마이징 등 직접 구현 가능</p>
+<p>&nbsp; - <a href="https://nssm.cc/">NSSM</a></p>
 <br><br><br>
 <h3>SCM (Service Control Manager)</h3>
 <p>서비스 DB의 목록을 제어함</p>
