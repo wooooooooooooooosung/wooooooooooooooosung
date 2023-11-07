@@ -160,4 +160,86 @@ public class Main {
 <img src="./IOThread.jpg">
 <br><br><br><br><br>
 
-<h2>3️⃣ Python에서 멀티 스레드 구현(멀티 프로세싱)</h2>
+<h2>3️⃣ Python 병렬 작업</h2>
+<br>
+<h3>multiprocessing 모듈을 사용한 병렬 처리</h3>
+
+```py
+# 싱글 프로세스
+import time
+from multiprocessing import Process, Queue
+
+def work(id, start, end, result):
+    total = 0
+    for i in range(start, end):
+        total += i
+    result.put(total)
+    return
+
+if __name__ == "__main__":
+    start = time.time()
+    
+    START, END = 0, 100000000
+    result = Queue()
+    th1 = Process(target=work, args=(1, START, END, result))
+    
+    th1.start()
+    
+    th1.join()
+    
+
+    result.put('STOP')
+    total = 0
+    while True:
+        tmp = result.get()
+        if tmp == 'STOP':
+            break
+        else:
+            total += tmp
+
+    print(f"Result: {total}")
+    print(f"Time: { time.time() - start }")
+```
+
+```py
+# 멀티 프로세스
+import time
+from multiprocessing import Process, Queue
+
+def work(id, start, end, result):
+    total = 0
+    for i in range(start, end):
+        total += i
+    result.put(total)
+    return
+
+if __name__ == "__main__":
+    start = time.time()
+    
+    START, END = 0, 100000000
+    result = Queue()
+    th1 = Process(target=work, args=(1, START, END//2, result))
+    th2 = Process(target=work, args=(2, END//2, END, result))
+    
+    th1.start()
+    th2.start()
+    th1.join()
+    th2.join()
+
+    result.put('STOP')
+    total = 0
+    while True:
+        tmp = result.get()
+        if tmp == 'STOP':
+            break
+        else:
+            total += tmp
+
+    print(f"Result: {total}")
+    print(f"Time: { time.time() - start }")
+```
+
+<br><br><br><br><br>
+<h2>4️⃣ 결론</h2>
+<h4>Python은 반드시 하나의 스레드만 처리해야 하기에 멀티 스레드를 만들어도, 병렬 처리가 불가하다.</h4>
+<h4>Python으로 병렬 처리가 필요할 시, 멀티 프로세싱으로 구현 가능하다.</h4>
