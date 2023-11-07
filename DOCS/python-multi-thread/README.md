@@ -15,6 +15,133 @@
 <br>
 <h3>Python 멀티 스레드 가능한가?</h3>
 <h4>멀티 스레드는 ⭕, 병렬 실행은 ❌</h4>
+<br><br><br>
+<h3>예제</h3>
+<br>
+<h4>Python</h4>
+
+```py
+# Python 싱글 스레드
+
+import time
+from threading import Thread
+
+def work(id, start, end, result):
+    total = 0
+    for i in range(start, end):
+        total += i
+    result.append(total)
+    return
+
+if __name__ == "__main__":
+
+    start = time.time()
+
+    result = list()
+    th1 = Thread(target=work, args=(1, 0, 100000000, result))
+    
+    th1.start()
+    th1.join()
+
+print(f"Result: { sum(result) }")
+print(f"Time: { time.time() - start }")
+```
+
+```py
+# Python 멀티 스레드
+import time
+from threading import Thread
+
+def work(id, start, end, result):
+    total = 0
+    for i in range(start, end):
+        print(i)
+        total += i
+    result.append(total)
+    return
+
+if __name__ == "__main__":
+
+    start = time.time()
+
+
+    result = list()
+    th1 = Thread(target=work, args=(1, 0, 50000000, result))
+    th2 = Thread(target=work, args=(2, 50000000, 100000000, result))
+    
+    th1.start()
+    th2.start()
+    th1.join()
+    th2.join()
+
+print(f"Result: { sum(result) }")
+print(f"Time: { time.time() - start }")
+
+print(len(result))
+```
+
+<h4>Java</h4>
+
+```java
+
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		new Main();
+	}
+	
+	public Main() {
+		long startTime = System.currentTimeMillis();
+
+		
+//		TestThread th = new TestThread(0, 2000000000);
+//		th.start();
+//		while (th.isAlive()) {}
+		
+		TestThread th1 = new TestThread(0, 1000000000);
+		TestThread th2 = new TestThread(1000000000, 2000000000);
+		th1.start();
+		th2.start();
+		while (th1.isAlive() || th2.isAlive()) {}
+		
+		
+		
+		long time = System.currentTimeMillis() - startTime;
+		System.out.println((double) time / 1000);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	class TestThread extends Thread {
+
+		private int start;
+		private int end;
+
+		public TestThread(int start, int end) {
+			this.start = start;
+			this.end = end;
+		}
+
+		@Override
+		public void run() {
+			long sum = 0;
+			for (int i = start; i < end; i++) {
+				sum += i;
+			}
+			System.out.println(sum);
+			
+		}
+	}
+
+}
+```
+
 
 <br><br><br><br><br>
 <h3>GIL (Global Interpreter Lock)</h3>
