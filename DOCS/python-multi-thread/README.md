@@ -142,7 +142,6 @@ public class Main {
 }
 ```
 
-
 <br><br><br><br><br>
 <h3>GIL (Global Interpreter Lock)</h3>
 <p>코드를 실행하는 인터프리터가 반드시 하나의 스레드만을 처리하도록 제한</p>
