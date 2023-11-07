@@ -14,7 +14,7 @@
 <h2>2️⃣ Python 멀티 스레드와 GIL</h2>
 <br>
 <h3>Python 멀티 스레드 가능한가?</h3>
-<h4>GIL 정책으로 멀티 스레드는 ⭕, 병렬 실행은 ❌</h4>
+<h4>멀티 스레드는 ⭕, 병렬 실행은 ❌</h4>
 
 <br><br><br><br><br>
 <h3>GIL (Global Interpreter Lock)</h3>
